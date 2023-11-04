@@ -96,11 +96,9 @@ export class minesweeperBoard extends LitElement {
     for(let mine= MINES_NUMBER; mine > 0; mine--){
       const row = Math.floor(Math.random() * BOARD_SIZE)
       const col = Math.floor(Math.random() * BOARD_SIZE)
-      console.log(row,col)
       this.board[row][col]= '🎃'
       this.bombsBoard.push([row,col])
-    }
-    console.log(this.board)   
+    }  
   }
   
   private handleVolume(e: Event) {
@@ -144,7 +142,6 @@ export class minesweeperBoard extends LitElement {
       newBoard[rowIndex][cellIndex] = count
       this.board= newBoard
     } 
-    console.log(this.board[rowIndex][cellIndex])
     button.innerHTML = this.board[rowIndex][cellIndex] as string
   }
   private gameOver(button: HTMLButtonElement){
@@ -155,7 +152,6 @@ export class minesweeperBoard extends LitElement {
   
   checkWin(celRow: number, celCol: number){
     const checkIncludesCell= this.markUserBoard.some(item=>{
-      console.log(item.toString() === [celRow,celCol].toString())
       return item.toString() === [celRow,celCol].toString()
     })
     if(checkIncludesCell){
